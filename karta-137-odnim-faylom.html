@@ -9,6 +9,7 @@
 <meta property="og:description" content="Итоги выборов в Госдуму 20.09.2026 по Новосибирскому одномандатному округу №137: карта 497 участков, разбор где кампания выиграла, где проиграла и почему.">
 <meta property="og:type" content="website">
 <style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}</style>
+<meta charset="utf-8">
 <title>Электоральная карта округа 137</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,6 +190,8 @@ select,input[type=search]{
 .card>.dek{font-size:13px; color:var(--ink-2); margin-bottom:16px; max-width:76ch; line-height:1.55}
 .card>.dek b{color:var(--ink); font-weight:600}
 .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:17px}
+/* без min-width:0 элемент грида не сжимается уже своего содержимого и выпирает за экран */
+.grid2>*{min-width:0}
 .finding{
   display:flex; gap:11px; align-items:flex-start; background:var(--surface-2);
   border-radius:8px; padding:11px 13px; margin-top:14px; font-size:13px; line-height:1.5;
@@ -255,11 +258,79 @@ tbody tr:hover{background:var(--surface-2)}
 .pill.p2{background:var(--line-2); color:var(--ink-2)}
 footer{color:var(--ink-3); font-size:11.5px; line-height:1.6; padding:22px 20px 40px; max-width:1180px; margin:0 auto}
 footer b{color:var(--ink-2)}
+/* кнопки масштаба поверх карты — на телефоне это основной способ приближать */
+.mapzoom{position:absolute; right:12px; bottom:12px; display:flex; flex-direction:column; gap:6px; z-index:18}
+.mapzoom .zb{
+  width:40px; height:40px; padding:0; font-size:19px; line-height:1; font-weight:600;
+  background:var(--surface); border:1px solid var(--line); border-radius:9px; box-shadow:var(--shadow);
+  color:var(--ink-2); display:flex; align-items:center; justify-content:center;
+}
+.mapzoom .zb:hover{color:var(--ink); border-color:var(--ink-3)}
+
 @media (max-width:820px){
-  .mapwrap{grid-template-columns:1fr}
-  .rail{max-height:none; border-right:0; border-bottom:1px solid var(--line)}
-  .canvas{height:64vh}
-  .detail{position:static; width:auto; max-height:none; margin:12px}
+  .mapwrap{display:block}
+  .rail{
+    max-height:none; overflow:visible; border-right:0; border-bottom:1px solid var(--line);
+    padding:12px 16px; gap:13px;
+  }
+  .canvas{height:58vh; min-height:330px}
+  /* карточка участка — шторкой снизу: внутри карты её срезало бы overflow */
+  .detail{
+    position:fixed; left:0; right:0; bottom:0; top:auto; width:auto; max-height:66vh;
+    border-radius:14px 14px 0 0; border-left:0; border-right:0; border-bottom:0;
+    z-index:60; padding-bottom:24px;
+  }
+  .inset{display:none}          /* врезка не нужна: есть кнопка «Новосибирск» */
+}
+
+@media (max-width:560px){
+  body{font-size:13.5px}
+  header.top{padding:10px 16px 0}
+  .brand{gap:9px; min-width:0}
+  .brand>div{min-width:0}
+  .brand h1{font-size:16px; line-height:1.25}
+  .brand .sub{font-size:11.5px}
+  .tabs,.rail .layers{min-width:0}
+  /* показатели лентой с прокруткой, иначе они съедают пол-экрана */
+  .kpis{flex-wrap:nowrap; overflow-x:auto; gap:15px; padding-bottom:5px; min-width:0}
+  .kpi{flex:none}
+  .kpi .val{font-size:15px}
+  .kpi .lab{font-size:9.5px}
+  .tabs{overflow-x:auto}
+  .tab{padding:9px 10px; font-size:13px; flex:none}
+  .tabs .themebtn{flex:none; margin-left:8px}
+  .kpis::-webkit-scrollbar,.tabs::-webkit-scrollbar,.layers::-webkit-scrollbar{display:none}
+  .kpis,.tabs,.layers{scrollbar-width:none}
+
+  /* слои — чипсами в одну прокручиваемую строку */
+  .rail .layers{flex-direction:row; overflow-x:auto; gap:6px; padding-bottom:3px}
+  .ly{
+    width:auto; flex:none; white-space:nowrap; border:1px solid var(--line);
+    border-radius:18px; padding:7px 13px; font-size:12.5px;
+  }
+  .ly em{display:none}
+  .ly[aria-pressed="true"]{box-shadow:none; border-color:var(--kprf)}
+  .legend{flex-direction:row; flex-wrap:wrap; gap:5px 15px}
+  .lg{font-size:11.5px}
+  .lg b{margin-left:5px}
+  .canvas{height:52vh}
+  #grp-note{display:none}
+  .grp>.t{font-size:9.5px}
+
+  .page{padding:18px 16px 58px}
+  .lede,.rep .lead{font-size:14.5px}
+  .card{padding:15px 14px}
+  .card>h2{font-size:14.5px}
+  .keyfig{grid-template-columns:1fr 1fr; gap:9px; margin:20px 0 6px}
+  .keyfig>div{padding:11px 12px}
+  .keyfig .n{font-size:21px}
+  .keyfig .c{font-size:11.5px}
+  .grid2{grid-template-columns:1fr}
+  .rep h2{font-size:17px; margin-top:30px}
+  .pull{font-size:14.5px; padding-left:14px}
+  .stats{grid-template-columns:repeat(3,1fr); gap:7px}
+  .tbar input[type=search],.tbar select{max-width:none; flex:1 1 150px}
+  footer{padding:18px 16px 32px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
@@ -308,13 +379,18 @@ footer b{color:var(--ink-2)}
       <div class="t">Найти участок</div>
       <input type="search" id="find" placeholder="Номер УИК, например 1507" inputmode="numeric">
     </div>
-    <div class="grp">
+    <div class="grp" id="grp-note">
       <div class="t">Как читать карту</div>
       <p class="note" id="mapnote"></p>
     </div>
   </aside>
   <div class="canvas" id="canvas">
     <svg id="map" role="img" aria-label="Карта избирательных участков округа №137"></svg>
+    <div class="mapzoom">
+      <button class="zb" data-z="in" aria-label="Приблизить">+</button>
+      <button class="zb" data-z="out" aria-label="Отдалить">−</button>
+      <button class="zb" data-z="all" aria-label="Показать весь округ" title="Весь округ">⤢</button>
+    </div>
     <div class="inset" id="inset">
       <button class="cap" id="insetcap" aria-expanded="true" title="Свернуть врезку">Новосибирск <span>150 уч.</span></button>
       <div class="body"><svg id="imap" role="img" aria-label="Врезка: городская часть округа"></svg></div>
@@ -738,41 +814,95 @@ function buildLegend(){
 
 /* ============ ЗУМ И ПАНОРАМА ============ */
 (function(){
-  const cv2=document.getElementById("canvas");
-  let drag=null;
+  // На телефоне нет колеса мыши, а touch-action:none выключает и родной зум
+  // браузера — поэтому приближение здесь целиком своё: щипок двумя пальцами,
+  // кнопки на карте и колесо на десктопе.
+  const pts=new Map();          // активные касания и курсоры
+  let pan=null, pinch=null;
+
+  const LIM={min:FULL.w/900, max:FULL.w*1.6};
+  function zoomTo(nw, fx, fy, base){
+    const b=base||VB;
+    nw=Math.min(LIM.max, Math.max(LIM.min, nw));
+    const k=nw/b.w;
+    VB.x=b.x+b.w*fx*(1-k); VB.y=b.y+b.h*fy*(1-k);
+    VB.w=nw; VB.h=b.h*k; applyVB();
+  }
+  function frac(cx,cy){
+    const r=svg.getBoundingClientRect();
+    return {fx:(cx-r.left)/r.width, fy:(cy-r.top)/r.height};
+  }
+
   svg.addEventListener("pointerdown",e=>{
-    drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y}; svg.classList.add("drag"); svg.setPointerCapture(e.pointerId);
+    svg.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){
+      const [a,b]=[...pts.values()];
+      const f=frac((a.x+b.x)/2,(a.y+b.y)/2);
+      pinch={d:Math.hypot(a.x-b.x,a.y-b.y), fx:f.fx, fy:f.fy, vb:{...VB}};
+      pan=null; svg.classList.remove("drag"); tip.hidden=true;
+    }else if(pts.size===1){
+      pan={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y};
+      svg.classList.add("drag");
+    }
   });
+
   svg.addEventListener("pointermove",e=>{
-    if(!drag) return;
-    const k=VB.w/(svg.clientWidth||900);
-    VB.x=drag.vx-(e.clientX-drag.x)*k; VB.y=drag.vy-(e.clientY-drag.y)*k; applyVB();
+    if(!pts.has(e.pointerId)) return;
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pinch && pts.size>=2){
+      const [a,b]=[...pts.values()];
+      const d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d>4 && pinch.d>4) zoomTo(pinch.vb.w*(pinch.d/d), pinch.fx, pinch.fy, pinch.vb);
+      return;
+    }
+    if(pan){
+      const k=VB.w/(svg.clientWidth||900);
+      VB.x=pan.vx-(e.clientX-pan.x)*k; VB.y=pan.vy-(e.clientY-pan.y)*k; applyVB();
+    }
   });
-  const stop=e=>{ if(drag){drag=null; svg.classList.remove("drag");} };
-  svg.addEventListener("pointerup",stop); svg.addEventListener("pointercancel",stop);
+
+  const release=e=>{
+    pts.delete(e.pointerId);
+    if(pts.size<2) pinch=null;
+    if(pts.size===0){ pan=null; svg.classList.remove("drag"); }
+    else if(pts.size===1){
+      const [p]=[...pts.values()];
+      pan={x:p.x,y:p.y,vx:VB.x,vy:VB.y};   // палец остался один — продолжаем тащить
+    }
+  };
+  svg.addEventListener("pointerup",release);
+  svg.addEventListener("pointercancel",release);
+
   svg.addEventListener("wheel",e=>{
     e.preventDefault();
-    const r=svg.getBoundingClientRect();
-    const fx=(e.clientX-r.left)/r.width, fy=(e.clientY-r.top)/r.height;
-    const f=e.deltaY>0?1.16:1/1.16;
-    const nw=Math.min(FULL.w*1.6, Math.max(FULL.w/900, VB.w*f));
-    const k=nw/VB.w;
-    VB.x+=VB.w*fx*(1-k); VB.y+=VB.h*fy*(1-k); VB.w=nw; VB.h*=k; applyVB();
+    const f=frac(e.clientX,e.clientY);
+    zoomTo(VB.w*(e.deltaY>0?1.16:1/1.16), f.fx, f.fy);
   },{passive:false});
   document.querySelectorAll(".zb").forEach(b=>b.onclick=()=>{
     const z=b.dataset.z;
     if(z==="all") fit(FULL,.02);
     else if(z==="city") zoomCity();
     else {
-      const f=z==="in"?1/1.4:1.4, nw=Math.min(FULL.w*1.6,Math.max(FULL.w/900,VB.w*f));
-      const k=nw/VB.w; VB.x+=VB.w*(1-k)/2; VB.y+=VB.h*(1-k)/2; VB.w=nw; VB.h*=k; applyVB();
+      zoomTo(VB.w*(z==="in"?1/1.55:1.55), .5, .5);
     }
   });
   const sel=document.getElementById("gozone");
   sel.appendChild(new Option("— выберите территорию —",""));
   TIKS.forEach(t=>sel.appendChild(new Option(`${t.tik} (${t.n} УИК)`,t.tik)));
   sel.onchange=()=>{ const b=terrBox[sel.value]; if(b) fit(b,.08); };
-  window.addEventListener("resize",()=>applyVB());
+  function refitAspect(){
+    const ar=(svg.clientWidth||900)/(svg.clientHeight||600);
+    if(!isFinite(ar) || ar<=0) return;
+    const cx=VB.x+VB.w/2, cy=VB.y+VB.h/2;
+    VB.h=VB.w/ar; VB.x=cx-VB.w/2; VB.y=cy-VB.h/2;
+    applyVB();
+  }
+  window.addEventListener("resize",refitAspect);
+  window.addEventListener("orientationchange",()=>setTimeout(refitAspect,220));
+  // раскладка может доехать уже после первого кадра — например, когда подгрузятся шрифты
+  window.addEventListener("load",()=>setTimeout(refitAspect,60));
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>refitAspect());
 })();
 
 /* ============ ПОДСКАЗКА И КАРТОЧКА ============ */
@@ -849,7 +979,10 @@ document.getElementById("find").addEventListener("input",e=>{
 });
 
 /* ============ ГРАФИКИ ============ */
-function svgEl(w,h){ const s=mk("svg",{viewBox:`0 0 ${w} ${h}`, width:"100%", style:`max-width:${w}px`}); return s; }
+function svgEl(w,h){
+  return mk("svg",{viewBox:`0 0 ${w} ${h}`, width:"100%",
+    style:`max-width:${w}px;min-width:${Math.min(w,500)}px`});
+}
 function txt(s,x,y,c,anchor,size){
   const t=mk("text",{x,y,class:c||"atx"}); if(anchor)t.setAttribute("text-anchor",anchor);
   if(size)t.setAttribute("font-size",size); t.textContent=s; return t;
