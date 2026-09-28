@@ -1,0 +1,1223 @@
+<title>Электоральная карта округа 137</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --ground:#e9ecef; --surface:#fff; --surface-2:#f4f6f8; --line:#d3d9e0; --line-2:#e4e8ed;
+  --ink:#14171b; --ink-2:#5b6370; --ink-3:#848d9a;
+  --kprf:#e34948; --er:#2a78d6; --other:#8b93a0;
+  --mapbg:#dfe4e9; --void:#cdd4dc;
+  --r1:#8f1f1d; --r2:#c03a37; --r3:#dd7472; --r4:#e79a98;
+  --nl1:#0e4746; --nl2:#18706e; --nl3:#2a9b98; --nl4:#62bfbd; --nl:#2a9b98;
+  --o1:#632d05; --o2:#8b470b; --o3:#b26517; --o4:#d08a41; --o5:#e0a26c;
+  --g1:#0b3d1f; --g2:#146030; --g3:#1a7a3e; --g4:#4a9e68; --g5:#7ab890;
+  --b1:#184f95; --b2:#2a78d6; --b3:#86b6ef; --neutral:#e6e5e1;
+  --warn:#fab219; --crit:#d03b3b; --good:#0ca30c;
+  --shadow:0 1px 2px rgba(16,22,30,.06),0 8px 24px rgba(16,22,30,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:#0f1215; --surface:#181c21; --surface-2:#1f242a; --line:#2e353d; --line-2:#252b32;
+    --ink:#e8ebee; --ink-2:#98a2af; --ink-3:#727c8a;
+    --kprf:#e66767; --er:#3987e5; --other:#7d8694;
+    --mapbg:#1a1e22; --void:#242a31;
+    --r1:#f7bebc; --r2:#e07b79; --r3:#c44340; --r4:#8d2f2d;
+    --nl1:#a6e2e1; --nl2:#68c8c6; --nl3:#34a09e; --nl4:#1d7472; --nl:#68c8c6;
+    --o1:#f2cfa8; --o2:#e0a464; --o3:#c67c2a; --o4:#a3611a; --o5:#80480f;
+    --g1:#b5d9c2; --g2:#84bd98; --g3:#4a9e68; --g4:#2b7f49; --g5:#16602f;
+    --b1:#86b6ef; --b2:#3987e5; --b3:#1c5cab; --neutral:#383835;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:#0f1215; --surface:#181c21; --surface-2:#1f242a; --line:#2e353d; --line-2:#252b32;
+  --ink:#e8ebee; --ink-2:#98a2af; --ink-3:#727c8a;
+  --kprf:#e66767; --er:#3987e5; --other:#7d8694;
+  --mapbg:#1a1e22; --void:#242a31;
+  --r1:#f7bebc; --r2:#e07b79; --r3:#c44340; --r4:#8d2f2d;
+    --nl1:#a6e2e1; --nl2:#68c8c6; --nl3:#34a09e; --nl4:#1d7472; --nl:#68c8c6;
+  --o1:#f2cfa8; --o2:#e0a464; --o3:#c67c2a; --o4:#a3611a; --o5:#80480f;
+  --g1:#b5d9c2; --g2:#84bd98; --g3:#4a9e68; --g4:#2b7f49; --g5:#16602f;
+  --b1:#86b6ef; --b2:#3987e5; --b3:#1c5cab; --neutral:#383835;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+/* без этого hidden не действует на элементы с заданным display (.mapwrap — grid) */
+[hidden]{display:none!important}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Golos Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+.num{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace; font-variant-numeric:tabular-nums}
+h1,h2,h3{text-wrap:balance; margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--er); outline-offset:2px; border-radius:3px}
+
+/* ---------- shell ---------- */
+.app{display:flex; flex-direction:column; min-height:100vh}
+header.top{
+  background:var(--surface); border-bottom:1px solid var(--line);
+  padding:14px 20px 0; position:sticky; top:0; z-index:40;
+}
+.brand{display:flex; align-items:flex-start; gap:18px; flex-wrap:wrap; justify-content:space-between}
+.brand h1{font-size:19px; font-weight:700; letter-spacing:-.01em}
+.brand .sub{color:var(--ink-2); font-size:12.5px; margin-top:2px}
+.kpis{display:flex; gap:22px; flex-wrap:wrap}
+.kpi{display:flex; flex-direction:column; gap:1px}
+.kpi .lab{font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+.kpi .val{font-size:17px; font-weight:700; letter-spacing:-.02em}
+.kpi .val small{font-size:11px; font-weight:500; color:var(--ink-2); letter-spacing:0}
+.tabs{display:flex; gap:2px; margin-top:12px; align-items:center}
+.tabs .themebtn{margin-left:auto; margin-bottom:6px}
+.tab{
+  background:none; border:0; padding:9px 15px; font-size:13.5px; font-weight:600; color:var(--ink-2);
+  border-bottom:2px solid transparent; margin-bottom:-1px;
+}
+.tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--kprf)}
+.tab:hover{color:var(--ink)}
+.themebtn{background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:5px 10px; font-size:12px; color:var(--ink-2)}
+
+/* ---------- map ---------- */
+.mapwrap{display:grid; grid-template-columns:288px 1fr; gap:0; flex:1; min-height:0}
+.rail{
+  background:var(--surface); border-right:1px solid var(--line); padding:16px;
+  overflow-y:auto; max-height:calc(100vh - 118px); display:flex; flex-direction:column; gap:18px;
+}
+.grp{display:flex; flex-direction:column; gap:7px}
+.grp>.t{font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); font-weight:600}
+.layers{display:flex; flex-direction:column; gap:1px}
+.ly{
+  display:block; width:100%; text-align:left; background:none; border:0; border-radius:6px;
+  padding:7px 9px; font-size:13px; color:var(--ink-2); line-height:1.3;
+}
+.ly:hover{background:var(--surface-2); color:var(--ink)}
+.ly[aria-pressed="true"]{background:var(--surface-2); color:var(--ink); font-weight:600; box-shadow:inset 2px 0 0 var(--kprf)}
+.ly em{display:block; font-style:normal; font-size:11px; color:var(--ink-3); font-weight:400; margin-top:1px}
+.legend{display:flex; flex-direction:column; gap:4px}
+.lg{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--ink-2)}
+.lg i{width:16px; height:12px; border-radius:2px; flex:none; border:1px solid rgba(128,128,128,.25)}
+.lg b{font-weight:600; color:var(--ink); font-size:11.5px; margin-left:auto}
+select,input[type=search]{
+  width:100%; background:var(--surface-2); border:1px solid var(--line); border-radius:6px;
+  padding:7px 9px; font:inherit; font-size:13px; color:var(--ink);
+}
+.zoombtns{display:flex; gap:6px; flex-wrap:wrap}
+.zb{background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:6px 10px; font-size:12px; color:var(--ink-2)}
+.zb:hover{border-color:var(--ink-3); color:var(--ink)}
+.note{font-size:11.5px; color:var(--ink-3); line-height:1.45}
+
+.canvas{position:relative; background:var(--mapbg); overflow:hidden}
+#map{width:100%; height:100%; display:block; cursor:grab; touch-action:none}
+#map.drag{cursor:grabbing}
+.terr{fill:none; stroke:var(--ink); stroke-opacity:.45; stroke-width:1.1; vector-effect:non-scaling-stroke; pointer-events:none}
+.cell{stroke:var(--mapbg); stroke-width:.5; vector-effect:non-scaling-stroke; cursor:pointer}
+.cell:hover{stroke:var(--ink); stroke-width:1.6}
+.cell.sel{stroke:var(--ink); stroke-width:2.4}
+/* размер задаётся из JS через inline-стиль: правило в таблице стилей
+   перебило бы атрибут font-size и подписи перестали бы масштабироваться */
+.tlabel{fill:var(--ink); font-weight:700; letter-spacing:.06em; paint-order:stroke;
+  stroke:var(--mapbg); stroke-opacity:.85; pointer-events:none; text-anchor:middle}
+.dot{fill:var(--ink); fill-opacity:.55; pointer-events:none}
+.nodot{fill:none; stroke:var(--warn); stroke-width:2; vector-effect:non-scaling-stroke; cursor:pointer}
+.inset{
+  position:absolute; left:12px; top:12px; width:300px; height:310px; background:var(--surface);
+  border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); overflow:hidden; z-index:15;
+}
+.inset svg{width:100%; height:100%; display:block; background:var(--mapbg)}
+.inset .cap{
+  position:absolute; top:0; left:0; right:0; padding:7px 10px; background:var(--surface);
+  border:0; border-bottom:1px solid var(--line-2); font-size:10.5px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-2); display:flex; justify-content:space-between; gap:8px;
+  text-align:left; width:100%;
+}
+.inset .cap:hover{color:var(--ink)}
+.inset.min{height:29px}
+.inset.min .body{display:none}
+.inset .cap span{font-weight:500; text-transform:none; letter-spacing:0; color:var(--ink-3)}
+.inset .body{position:absolute; top:28px; left:0; right:0; bottom:0}
+.tip{
+  position:absolute; pointer-events:none; background:var(--surface); border:1px solid var(--line);
+  border-radius:7px; padding:8px 10px; font-size:12px; box-shadow:var(--shadow); max-width:260px; z-index:20;
+}
+.tip .h{font-weight:700; margin-bottom:3px}
+.tip .r{display:flex; justify-content:space-between; gap:14px; color:var(--ink-2)}
+.tip .r b{color:var(--ink); font-weight:600}
+
+.detail{
+  position:absolute; top:12px; right:12px; width:330px; max-height:calc(100% - 24px); overflow-y:auto;
+  background:var(--surface); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow);
+  padding:15px; z-index:25;
+}
+.detail h3{font-size:16px; font-weight:700}
+.detail .close{position:absolute; top:10px; right:10px; background:none; border:0; color:var(--ink-3); font-size:18px; line-height:1; padding:3px 6px}
+.meta{color:var(--ink-2); font-size:12.5px; margin:3px 0 12px}
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:13px}
+.st{background:var(--surface-2); border-radius:7px; padding:7px 9px}
+.st .l{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3)}
+.st .v{font-size:15px; font-weight:700}
+.crow{display:grid; grid-template-columns:1fr auto; gap:3px 10px; align-items:center; margin-bottom:6px}
+.crow .nm{font-size:12.5px}
+.crow .pc{font-size:12.5px; font-weight:700}
+.crow .bar{grid-column:1/-1; height:5px; border-radius:3px; background:var(--line-2); overflow:hidden}
+.crow .bar i{display:block; height:100%; border-radius:3px}
+.brd{font-size:11.5px; color:var(--ink-2); line-height:1.5; margin-top:12px; padding-top:11px; border-top:1px solid var(--line-2)}
+.brd b{color:var(--ink); display:block; margin-bottom:3px; font-size:10px; letter-spacing:.07em; text-transform:uppercase}
+
+/* ---------- analytics ---------- */
+.page{max-width:1180px; margin:0 auto; padding:26px 20px 70px; width:100%}
+.lede{font-size:15.5px; line-height:1.6; color:var(--ink-2); max-width:66ch; margin-bottom:26px}
+.lede b{color:var(--ink); font-weight:600}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:19px; margin-bottom:17px}
+.card>h2{font-size:15.5px; font-weight:700; margin-bottom:4px; letter-spacing:-.01em}
+.card>.dek{font-size:13px; color:var(--ink-2); margin-bottom:16px; max-width:76ch; line-height:1.55}
+.card>.dek b{color:var(--ink); font-weight:600}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:17px}
+.finding{
+  display:flex; gap:11px; align-items:flex-start; background:var(--surface-2);
+  border-radius:8px; padding:11px 13px; margin-top:14px; font-size:13px; line-height:1.5;
+}
+.finding .ic{flex:none; width:6px; align-self:stretch; border-radius:3px; background:var(--kprf)}
+.finding.pos .ic{background:var(--good)}
+.finding.warn .ic{background:var(--warn)}
+.chart{width:100%; overflow-x:auto}
+.chart svg{display:block}
+.ax{stroke:var(--line); stroke-width:1}
+.gridln{stroke:var(--line-2); stroke-width:1}
+.atx{fill:var(--ink-2); font-size:11px}
+.atx.sm{font-size:10px}
+.vlab{fill:var(--ink); font-size:11px; font-weight:600}
+.lgnd{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:11px; font-size:12px; color:var(--ink-2)}
+.lgnd span{display:flex; align-items:center; gap:6px}
+.lgnd i{width:11px; height:11px; border-radius:3px}
+
+/* ---------- отчёт ---------- */
+.rep{padding-bottom:20px}
+.rep .lead{font-size:17px; line-height:1.62; max-width:64ch; color:var(--ink); margin-bottom:8px}
+.rep .lead b{font-weight:700}
+.rep h2{font-size:19px; font-weight:700; letter-spacing:-.015em; margin:38px 0 9px; max-width:60ch}
+.rep h2:first-of-type{margin-top:26px}
+.rep p{font-size:14.5px; line-height:1.7; max-width:68ch; margin:0 0 13px; color:var(--ink-2)}
+.rep p b{color:var(--ink); font-weight:600}
+.rep ul{max-width:68ch; margin:0 0 13px; padding-left:20px; color:var(--ink-2); font-size:14.5px; line-height:1.7}
+.rep li{margin-bottom:7px}
+.rep li b{color:var(--ink); font-weight:600}
+.rep .rule{height:1px; background:var(--line); margin:34px 0 0; max-width:68ch}
+.keyfig{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:12px; margin:24px 0 8px}
+.keyfig>div{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.keyfig .n{font-size:26px; font-weight:700; letter-spacing:-.03em; line-height:1.1}
+.keyfig .n.win{color:var(--kprf)}
+.keyfig .c{font-size:12.5px; color:var(--ink-2); margin-top:5px; line-height:1.45}
+.pull{
+  border-left:3px solid var(--kprf); padding:3px 0 3px 17px; margin:19px 0 21px; max-width:64ch;
+  font-size:16px; line-height:1.55; font-weight:600; color:var(--ink);
+}
+.pull.warn{border-left-color:var(--warn)}
+.pull.pos{border-left-color:var(--good)}
+.caveat{background:var(--surface-2); border-radius:10px; padding:17px 19px; max-width:72ch; margin-top:14px}
+.caveat p{max-width:none; margin-bottom:10px; font-size:13.5px}
+.caveat p:last-child{margin-bottom:0}
+
+/* ---------- table ---------- */
+.tbar{display:flex; gap:11px; flex-wrap:wrap; align-items:center; margin-bottom:13px}
+.tbar input[type=search]{max-width:260px}
+.tbar select{max-width:210px}
+table{width:100%; border-collapse:collapse; font-size:12.5px}
+th,td{padding:6px 9px; text-align:right; border-bottom:1px solid var(--line-2); white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),
+th:last-child,td:last-child{text-align:left}
+td:last-child{max-width:260px; overflow:hidden; text-overflow:ellipsis}
+th{
+  position:sticky; top:0; background:var(--surface); z-index:2; font-size:10.5px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--ink-3); cursor:pointer; border-bottom:1px solid var(--line);
+}
+th:hover{color:var(--ink)}
+tbody tr:hover{background:var(--surface-2)}
+.tw{max-height:70vh; overflow:auto; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
+.pill{display:inline-block; padding:1px 7px; border-radius:20px; font-size:11px; font-weight:600}
+.pill.p1{background:var(--kprf); color:#fff}
+.pill.p2{background:var(--line-2); color:var(--ink-2)}
+footer{color:var(--ink-3); font-size:11.5px; line-height:1.6; padding:22px 20px 40px; max-width:1180px; margin:0 auto}
+footer b{color:var(--ink-2)}
+@media (max-width:820px){
+  .mapwrap{grid-template-columns:1fr}
+  .rail{max-height:none; border-right:0; border-bottom:1px solid var(--line)}
+  .canvas{height:64vh}
+  .detail{position:static; width:auto; max-height:none; margin:12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<div class="app">
+<header class="top">
+  <div class="brand">
+    <div>
+      <h1>Округ №137 — где выиграли и где проиграли</h1>
+      <div class="sub">Выборы в Государственную Думу, 20 сентября 2026 · 497 участков + ДЭГ · данные протоколов МОСведений</div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="map">Карта</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rp">Выводы</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="an">Графики</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="tb">Участки</button>
+    <button class="themebtn" id="theme" title="Переключить светлую и тёмную тему">Тема</button>
+  </div>
+</header>
+
+<section id="v-map" class="mapwrap">
+  <aside class="rail">
+    <div class="grp">
+      <div class="t">Что показать на карте</div>
+      <div class="layers" id="layers"></div>
+    </div>
+    <div class="grp">
+      <div class="t">Легенда</div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="grp">
+      <div class="t">Перейти к территории</div>
+      <select id="gozone"></select>
+      <div class="zoombtns">
+        <button class="zb" data-z="all">Весь округ</button>
+        <button class="zb" data-z="city">Новосибирск</button>
+        <button class="zb" data-z="in">+</button>
+        <button class="zb" data-z="out">−</button>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="t">Найти участок</div>
+      <input type="search" id="find" placeholder="Номер УИК, например 1507" inputmode="numeric">
+    </div>
+    <div class="grp">
+      <div class="t">Как читать карту</div>
+      <p class="note" id="mapnote"></p>
+    </div>
+  </aside>
+  <div class="canvas" id="canvas">
+    <svg id="map" role="img" aria-label="Карта избирательных участков округа №137"></svg>
+    <div class="inset" id="inset">
+      <button class="cap" id="insetcap" aria-expanded="true" title="Свернуть врезку">Новосибирск <span>150 уч.</span></button>
+      <div class="body"><svg id="imap" role="img" aria-label="Врезка: городская часть округа"></svg></div>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+    <div class="detail" id="detail" hidden></div>
+  </div>
+</section>
+
+<section id="v-rp" class="page rep" hidden>
+  <p class="lead">Иванинский обошёл Жирнова на <b>33 336 голосов</b>. Разбор по всем 497 участкам показывает,
+  что это отставание создано не там, где его обычно ищут. <b>Город был выигран.</b> Округ проигран
+  электронным голосованием, сельской явкой и надомными бюллетенями — тремя вещами, на которые
+  агитация почти не влияет.</p>
+
+  <div class="keyfig">
+    <div><div class="n win">27,76%</div><div class="c">Жирнов в Новосибирске против 26,84% у Иванинского — город взят</div></div>
+    <div><div class="n">41%</div><div class="c">всего отставания дал один ДЭГ — 13 749 голосов из 33 336</div></div>
+    <div><div class="n">+0,78</div><div class="c">корреляция явки с результатом Иванинского: чем выше явка, тем хуже нам</div></div>
+    <div><div class="n win">106</div><div class="c">участков из 497 выиграно, почти все — городские</div></div>
+  </div>
+
+  <h2>Город выигран, округ проигран</h2>
+  <p>По ста пятидесяти городским участкам Жирнов набрал <b>27,76%</b> против <b>26,84%</b> у Иванинского.
+  Заельцовский район взят с уверенным отрывом — 30,07% против 25,14%, там же выиграно 40 участков из 60.
+  Железнодорожный выигран вплотную: 28,82% против 28,11%. Калининский проигран, но разница составила
+  всего 913 голосов на 70 участках.</p>
+  <p>Дальше от центра картина переворачивается. В пригороде Иванинский берёт 38,64% против 19,33%,
+  в селе — <b>42,71% против 20,96%</b>. Расстояние от Железнодорожного района до Кыштовки больше
+  пятисот километров, и по итогам голосования это два разных электората, а не один округ.</p>
+
+  <div class="pull">В бюллетене округа №137 лежат четыре разных электората: город, пригород, село и ДЭГ.
+  Кампания, которая работает на одном из них, на остальных не читается.</div>
+
+  <h2>ДЭГ: сорок один процент всего отставания</h2>
+  <p>На электронном голосовании подано 45 922 голоса — девятая часть всех голосов округа.
+  Явка там <b>90,3%</b> при 42,6% по округу: практически все, кто зарегистрировался, проголосовали.
+  Результат Жирнова в ДЭГ — <b>13,51%</b> против его же 21,90% на бумаге, у Иванинского 43,77% против 36,48%.</p>
+  <p>В голосах это <b>13 749 голосов отставания из 33 336</b>. Один электронный «участок» дал больше
+  отрыва, чем все десять сельских районов вместе взятые. Ни одна территория округа даже близко не
+  приближается к этой цифре: следующий по вкладу Новосибирский район — 3 606 голосов.</p>
+
+  <h2>Явка работает против нас, и это измеримо</h2>
+  <p>Если разложить 438 участков с сотней и более голосов на десять равных групп по явке, зависимость
+  оказывается почти линейной. Корреляция явки с процентом Иванинского <b>+0,78</b>, с процентом
+  Жирнова <b>−0,59</b>.</p>
+  <p>В трёх группах с самой низкой явкой — примерно до 33% — <b>Жирнов идёт впереди Иванинского</b>.
+  Начиная с четвёртой группы он отстаёт, и разрыв растёт монотонно: в группе с явкой 49–56% это уже
+  двадцать пунктов, а в группе с явкой 72–100% — <b>44,7 пункта</b>.</p>
+
+  <div class="pull warn">Перелом проходит по явке около 34%. Ниже неё мы выигрываем, выше — проигрываем,
+  и тем сильнее, чем выше явка. Общий призыв «приходите на выборы» в этом округе оплачивается из нашего
+  фонда, а работает на соперника.</div>
+
+  <h2>Спойлеров не было: гипотеза штаба не подтвердилась</h2>
+  <p>В аналитике кампании было записано, что Новые люди, Родина и ЛДПР работают на том же поле
+  недовольства и отбирают наши голоса, и что против них нужна отдельная работа по вытеснению из
+  протестной ниши. Данные по 147 городским участкам это не подтверждают.</p>
+  <p>Корреляция процента Жирнова с процентом Новых людей составила <b>+0,16</b>, с Яблоком <b>+0,33</b>.
+  Величина положительная: эти кандидаты набирали больше там же, где больше набирали мы. Это общий
+  городской протестный профиль, а не переток голосов. В реальной противофазе оказались совсем другие
+  двое — Родина (<b>−0,56</b>) и Партия пенсионеров (<b>−0,51</b>): их избиратель живёт на других участках.</p>
+
+  <div class="pull pos">Ресурс, заложенный на вытеснение Новых людей из протестной ниши, был потрачен
+  на угрозу, которой не существовало. Яблоко и Новые люди не отнимали наш электорат — они поднимали
+  тот же протестный слой, который иначе просто не дошёл бы до урны.</div>
+
+  <h2>Где сильны Яблоко и Новые люди</h2>
+  <p><b>Чубыкина (Яблоко)</b> по городу набрала 8,94% против 6,30% по округу. Сильнее всего —
+  Железнодорожный район, <b>12,24%</b>; затем Заельцовский, 9,58%, и Калининский, 7,32%. Лучшие
+  участки — привокзальная часть и старый центр вдоль Красного проспекта: УИК 1507 на Вокзальной
+  магистрали дал ей 17,85%, УИК 1510 на Щетинкина — 15,92%. Корреляция с нашим результатом по
+  городу +0,39.</p>
+  <p><b>Левшенков (Новые люди)</b> занял первое место ровно на одном участке округа — УИК 1574 в
+  Заельцовском районе, 30,67%. Второе место у него на девяти участках, третье — на 145. Вся его сила
+  сосредоточена в узкой полосе участков 1563–1580: новостройки у аэропорта и вдоль Дуси Ковальчук,
+  куда за последние годы въехали молодые семьи.</p>
+
+  <h2>Аномалии: закрытые участки и надомное голосование</h2>
+  <p>Тридцать участков показали явку <b>80% и выше</b>. Суммарно это 7 045 голосов, и результат там
+  резко отличается от соседей: Жирнов <b>12,48%</b>, Иванинский <b>58,61%</b>. Четыре участка дали явку
+  ровно 100% — 2080 и 2085 в Новосибирском районе, 2049 в Оби и 581 в Куйбышевском. Это закрытые
+  учреждения, адреса которых не публикуются.</p>
+  <p>Отдельный сюжет — голосование вне помещения. В среднем по округу надомными принесли 10,9%
+  бюллетеней, но на <b>137 участках эта доля превысила 20%</b>. В сумме там 37 710 голосов, и расклад
+  на них — Иванинский <b>48,69%</b> против <b>18,01%</b> у Жирнова. Рекорд поставил УИК 578 в Куйбышевском
+  районе: <b>72%</b> всех бюллетеней участка принесли на дом.</p>
+
+  <h2>Ближайший резерв</h2>
+  <p>Есть <b>70 участков</b>, где Иванинский обошёл нас меньше чем на пять процентных пунктов.
+  Суммарное отставание на них — <b>632 голоса</b>: в двадцать с лишним раз меньше, чем один ДЭГ отнял
+  за день. Семь десятых этого резерва приходится на три городских района: Калининский (223 голоса),
+  Заельцовский (147) и Железнодорожный (72).</p>
+  <p>Это самая дешёвая прибавка в следующей кампании. Там не нужно менять электорат и не нужно
+  переубеждать: нужно довести до урны своих на территории, где мы уже выигрываем.</p>
+
+  <h2>Что из этого следует</h2>
+  <ul>
+    <li><b>ДЭГ — отдельное направление кампании, а не частность.</b> Он дал больше отставания, чем
+      вся сельская часть округа. Пока работа с электронным голосованием ведётся по остаточному
+      принципу, любой прирост на земле будет съедаться за один день.</li>
+    <li><b>Отказ от общей агитации за явку подтверждён цифрами.</b> Порог 34% — рабочий ориентир:
+      призыв к явке имеет смысл только адресно, на участках, где мы и так первые.</li>
+    <li><b>Снять из стратегии тезис о вытеснении Новых людей.</b> Переток не подтверждается;
+      освободившийся ресурс логичнее направить на городской резерв.</li>
+    <li><b>Город — опорная территория, а не поле борьбы.</b> Три городских района дали и 106 выигранных
+      участков, и семь десятых ближайшего резерва. Ставка на них окупается лучше всего.</li>
+    <li><b>Наблюдение имеет смысл концентрировать точечно.</b> Тридцать участков с явкой от 80% и
+      137 участков с надомным голосованием выше 20% — это готовый адресный список на следующий цикл,
+      он есть во вкладке «Участки» с фильтрами.</li>
+  </ul>
+
+  <div class="rule"></div>
+  <h2>Что в этих данных точно, а что приближённо</h2>
+  <div class="caveat">
+    <p><b>Результаты — точные.</b> Взяты из протокольной таблицы МОСведений по округу №137. Сумма по всем
+    497 участкам и ДЭГ сходится с итогом округа до одного голоса по каждому из восьми кандидатов и по
+    всем контрольным строкам протокола.</p>
+    <p><b>Адреса городских участков — официальные.</b> 147 из 150 разобраны из перечня избирательных
+    участков мэрии Новосибирска в редакции от 8 июля 2026 года, вместе с текстовым описанием границ.</p>
+    <p><b>Координаты проверены дважды.</b> Геокодирование официальных адресов сверено с открытым датасетом
+    координат участков 2021 года: медиана расхождения 14 метров, 95% точек ближе 200 метров. Дополнительно
+    каждая точка проверена на попадание внутрь границ своего района — прошли 490 из 491.</p>
+    <p><b>Границы участков на карте — приближение.</b> Настоящие границы УИК публикуются только текстом,
+    перечнем улиц и домов; геоданных по ним в открытом доступе не существует. Закрашенные области —
+    полигоны Вороного: территория, ближайшая к данному участку внутри его района. Для городских участков
+    в карточке приведено официальное текстовое описание границ, и при спорах верить следует ему.</p>
+    <p><b>Семь участков без установленного места:</b> 860, 2043, 2044, 2048, 2049, 2080, 2085. Это закрытые
+    учреждения и участки временного пребывания, адреса которых не публикуются. В расчётах они участвуют
+    полностью, неизвестно только расположение. УИК 860 исключён отдельно: точка из датасета 2021 года
+    указывала в Ордынский район, то есть за пределы округа.</p>
+  </div>
+</section>
+
+<section id="v-an" class="page" hidden></section>
+<section id="v-tb" class="page" hidden>
+  <div class="tbar">
+    <input type="search" id="tsearch" placeholder="Поиск: номер, адрес, учреждение">
+    <select id="tzone"></select>
+    <select id="tfilter">
+      <option value="">Все участки</option>
+      <option value="won">Где Жирнов первый</option>
+      <option value="close">Проиграли в пределах 5 п.п.</option>
+      <option value="hi">Явка от 80%</option>
+      <option value="home">Надомное от 20%</option>
+      <option value="noloc">Без установленного адреса</option>
+    </select>
+    <button class="zb" id="copycsv">Скопировать как CSV</button>
+    <span class="note" id="tcount"></span>
+  </div>
+  <div class="tw"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+</section>
+
+<footer id="foot"></footer>
+</div>
+
+<script src="data.js"></script>
+<script src="geo.js"></script>
+<script>
+(function(){
+"use strict";
+// Язык задаётся явно: иначе браузер считает язык страницы неизвестным и может
+// предложить перевод или перевести сам — текст тогда уезжает в английский.
+document.documentElement.lang="ru";
+const D=window.D, G=window.G;
+const U=D.uiks, DEG=D.deg, TIKS=D.tiks;
+const ALL=U.concat([DEG]);
+const byNum={}; U.forEach(u=>byNum[u.uik]=u);
+const CAND=D.meta.candidates;
+const SHORT={}, PARTY={}; CAND.forEach(c=>{SHORT[c.key]=c.short; PARTY[c.key]=c.party;});
+const ZH="zhirnov", IV="ivaninsky", NL="levshenkov", YA="chubykina";
+const fmt=n=>(n==null?"—":n.toLocaleString("ru-RU"));
+const pc=n=>(n==null?"—":n.toFixed(2).replace(".",",")+"%");
+const pp=n=>(n>0?"+":"")+n.toFixed(1).replace(".",",");
+const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const el=(t,c,x)=>{const e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e;};
+
+/* ============ KPI ============ */
+(function(){
+  const t=D.meta.totals, zh=CAND.find(c=>c.key===ZH), iv=CAND.find(c=>c.key===IV);
+  const won=U.filter(u=>u.win===ZH).length;
+  const box=document.getElementById("kpis");
+  [["Жирнов, КПРФ",`<span class="num">${pc(zh.pct)}</span> <small>${fmt(zh.votes)} гол.</small>`],
+   ["Иванинский, ЕР",`<span class="num">${pc(iv.pct)}</span> <small>${fmt(iv.votes)} гол.</small>`],
+   ["Отставание",`<span class="num">${fmt(iv.votes-zh.votes)}</span> <small>голосов</small>`],
+   ["Участков взято",`<span class="num">${won}</span> <small>из ${U.length}</small>`],
+   ["Явка по округу",`<span class="num">${pc(t.turnout_pct)}</span> <small>${fmt(t.turnout_abs)}</small>`]
+  ].forEach(([l,v])=>{
+    const k=el("div","kpi"); k.appendChild(el("div","lab",l));
+    const d=el("div","val"); d.innerHTML=v; k.appendChild(d); box.appendChild(k);
+  });
+})();
+
+/* ============ ЛЕГЕНДА / СЛОИ ============ */
+const R4=["--r1","--r2","--r3","--r4"], NL4=["--nl1","--nl2","--nl3","--nl4"], O5=["--o1","--o2","--o3","--o4","--o5"], G5=["--g1","--g2","--g3","--g4","--g5"];
+const DIV=["--b1","--b2","--b3","--neutral","--r4","--r2","--r1"];
+
+function binIdx(v,edges){ for(let i=0;i<edges.length;i++) if(v<edges[i]) return i; return edges.length; }
+
+const LAYERS=[
+ {id:"pl_zh", name:"Место Жирнова (КПРФ)", hint:"Какое место занял на участке",
+  note:"Тёмный — первое место. Жирнов выиграл 106 участков из 497: весь центр Заельцовского, часть Калининского и Железнодорожного.",
+  val:u=>Math.min(u.pl[ZH],4)-1, ramp:R4,
+  labels:["1 место","2 место","3 место","4-е и ниже"], count:true},
+
+ {id:"pl_nl", name:"Место Левшенкова (Новые люди)", hint:"Какое место занял на участке",
+  note:"Слой в фирменном бирюзовом цвете партии, тёмный — первое место. Новые люди взяли его лишь на одном участке — УИК 1574 в Заельцовском (30,7%). Это новостройки на Аэропорту: молодой избиратель.",
+  val:u=>Math.min(u.pl[NL],4)-1, ramp:NL4,
+  labels:["1 место","2 место","3 место","4-е и ниже"], count:true},
+
+ {id:"win", name:"Кто победил на участке", hint:"Первое место",
+  note:"Синий — Иванинский, красный — Жирнов. Чёткая граница проходит не между партиями, а между городом и селом.",
+  val:u=>u.win===IV?0:(u.win===ZH?1:2), ramp:["--er","--kprf","--other"],
+  labels:["Иванинский, ЕР","Жирнов, КПРФ","другой кандидат"], count:true},
+
+ {id:"gap", name:"Отрыв Жирнов − Иванинский", hint:"В процентных пунктах",
+  note:"Красный — мы впереди, синий — позади. Бледно-красная и серая полосы — это резерв: 70 участков, где Иванинский обошёл нас меньше чем на 5 пунктов.",
+  val:u=>{const g=u.p[ZH]-u.p[IV]; return binIdx(g,[-20,-8,-2,2,8,20]);}, ramp:DIV,
+  labels:["−20 п.п. и хуже","от −20 до −8","от −8 до −2","ничья ±2","от +2 до +8","от +8 до +20","+20 п.п. и лучше"], count:true},
+
+ {id:"turn", name:"Явка", hint:"Главный предсказатель результата",
+  note:"Корреляция явки и процента Иванинского +0,78. Там, где явка ниже 34%, Жирнов выигрывает; выше — проигрывает, и тем сильнее, чем выше явка.",
+  val:u=>4-binIdx(u.turnout,[30,40,50,60]), ramp:O5,
+  labels:["60% и выше","50–60%","40–50%","30–40%","ниже 30%"], count:true},
+
+ {id:"home", name:"Голосование вне помещения", hint:"Доля надомных бюллетеней",
+  note:"По округу в среднем 10,9%. На 137 участках доля превысила 20% — там Иванинский взял 48,7% против 18,0% у Жирнова.",
+  val:u=>4-binIdx(u.outside,[5,10,20,35]), ramp:O5,
+  labels:["35% и выше","20–35%","10–20%","5–10%","ниже 5%"], count:true},
+
+ {id:"ya", name:"Результат Чубыкиной (Яблоко)", hint:"Процент за кандидата",
+  note:"По городу 8,94% против 6,30% по округу. Ядро — Железнодорожный район (12,24%) и центральная часть Заельцовского вдоль Красного проспекта.",
+  val:u=>4-binIdx(u.p[YA],[3,5,8,11]), ramp:G5,
+  labels:["11% и выше","8–11%","5–8%","3–5%","ниже 3%"], count:true},
+
+ {id:"zh", name:"Результат Жирнова", hint:"Процент за кандидата",
+  note:"Ровно один географический сюжет: чем ближе к центру Новосибирска, тем выше результат. Город дал 27,76%, село — 20,96%, ДЭГ — 13,51%.",
+  val:u=>3-binIdx(u.p[ZH],[18,24,30]), ramp:R4,
+  labels:["30% и выше","24–30%","18–24%","ниже 18%"], count:true}
+];
+let LAYER=LAYERS[0];
+
+/* ============ ПРОЕКЦИЯ И ОТРИСОВКА ============ */
+const KX=Math.cos(55*Math.PI/180), S=1000;
+const px=(lon,lat)=>[lon*KX*S, -lat*S];
+function ring(r){ let d=""; for(let i=0;i<r.length;i++){const p=px(r[i][0],r[i][1]); d+=(i?"L":"M")+p[0].toFixed(2)+" "+p[1].toFixed(2);} return d+"Z"; }
+function geomPath(g){
+  if(!g) return "";
+  if(g.type==="Polygon") return g.coordinates.map(ring).join("");
+  if(g.type==="MultiPolygon") return g.coordinates.map(p=>p.map(ring).join("")).join("");
+  return "";
+}
+function bbox(paths){
+  let a=1e9,b=1e9,c=-1e9,d=-1e9;
+  paths.forEach(g=>{
+    const polys = g.type==="Polygon"?[g.coordinates]:g.coordinates;
+    polys.forEach(poly=>poly[0].forEach(pt=>{
+      const p=px(pt[0],pt[1]);
+      if(p[0]<a)a=p[0]; if(p[1]<b)b=p[1]; if(p[0]>c)c=p[0]; if(p[1]>d)d=p[1];
+    }));
+  });
+  return {x:a,y:b,w:c-a,h:d-b};
+}
+function centroid(g){
+  const polys = g.type==="Polygon"?[g.coordinates]:g.coordinates;
+  let best=null,ba=-1;
+  polys.forEach(poly=>{
+    const r=poly[0]; let sx=0,sy=0;
+    r.forEach(p=>{sx+=p[0]; sy+=p[1];});
+    let a=0; for(let i=0,j=r.length-1;i<r.length;j=i++) a+=r[j][0]*r[i][1]-r[i][0]*r[j][1];
+    a=Math.abs(a/2);
+    if(a>ba){ba=a; best=[sx/r.length, sy/r.length];}
+  });
+  return best?px(best[0],best[1]):null;
+}
+
+const svg=document.getElementById("map");
+const NS="http://www.w3.org/2000/svg";
+const mk=(t,at)=>{const e=document.createElementNS(NS,t); for(const k in at) e.setAttribute(k,at[k]); return e;};
+
+const gCells=mk("g",{}), gTerr=mk("g",{}), gDots=mk("g",{}), gLab=mk("g",{});
+svg.append(gCells,gTerr,gDots,gLab);
+
+const cellEls={};
+G.cells.features.forEach(f=>{
+  const p=mk("path",{d:geomPath(f.geometry), class:"cell"});
+  p.dataset.uik=f.properties.uik;
+  cellEls[f.properties.uik]=p; gCells.appendChild(p);
+});
+const CITY=["Железнодорожный","Заельцовский","Калининский"];
+const terrBox={}, terrPath={};
+G.territories.features.forEach(f=>{
+  const tik=f.properties.tik, d=geomPath(f.geometry);
+  terrPath[tik]=d;
+  gTerr.appendChild(mk("path",{d, class:"terr"}));
+  terrBox[tik]=bbox([f.geometry]);
+  const c=centroid(f.geometry);
+  if(c){
+    const t=mk("text",{x:c[0], y:c[1], class:"tlabel"});
+    t.textContent=tik;
+    t.dataset.tik=tik;
+    if(CITY.includes(tik)) t.dataset.city="1";
+    gLab.appendChild(t);
+  }
+});
+U.forEach(u=>{
+  if(u.lat==null) return;
+  const p=px(u.lon,u.lat);
+  if(u.prec==="неизвестно"){
+    const r=mk("rect",{x:p[0]-3,y:p[1]-3,width:6,height:6,class:"nodot"});
+    r.dataset.uik=u.uik; gDots.appendChild(r);
+  }
+});
+
+const FULL=bbox(G.territories.features.map(f=>f.geometry));
+let VB={x:FULL.x-FULL.w*.02, y:FULL.y-FULL.h*.04, w:FULL.w*1.04, h:FULL.h*1.08};
+function applyVB(){ svg.setAttribute("viewBox",`${VB.x} ${VB.y} ${VB.w} ${VB.h}`); scaleLabels(); }
+function scaleLabels(){
+  // k переводит экранные пиксели в единицы viewBox, чтобы подписи и метки
+  // оставались одного размера на экране при любом зуме
+  const k=VB.w/(svg.clientWidth||900);
+  const wide=VB.w>FULL.w*0.35;      // на полном охвате город показан во врезке
+  gLab.querySelectorAll("text").forEach(t=>{
+    t.style.fontSize=(11.5*k).toFixed(3)+"px";
+    t.style.strokeWidth=(3.2*k).toFixed(3)+"px";
+    // подпись прячется, если территория в текущем масштабе слишком мала для неё
+    const b=terrBox[t.dataset.tik];
+    const tooSmall = b && b.w < VB.w*0.055 && b.h < VB.h*0.055;
+    t.style.display = (tooSmall || (wide && t.dataset.city)) ? "none" : "";
+  });
+  gDots.querySelectorAll("rect").forEach(r=>{
+    const u=byNum[r.dataset.uik]; if(!u) return;
+    const p=px(u.lon,u.lat), s=4*k;
+    r.setAttribute("x",p[0]-s); r.setAttribute("y",p[1]-s); r.setAttribute("width",s*2); r.setAttribute("height",s*2);
+  });
+}
+
+/* врезка по городу: те же ячейки в собственном масштабе */
+const imap=document.getElementById("imap");
+const iCells={};
+(function(){
+  const gi=mk("g",{}), gt=mk("g",{});
+  imap.append(gi,gt);
+  U.forEach(u=>{
+    if(u.type!=="city") return;
+    const src=cellEls[u.uik]; if(!src) return;
+    const p=mk("path",{d:src.getAttribute("d"), class:"cell"});
+    p.dataset.uik=u.uik; iCells[u.uik]=p; gi.appendChild(p);
+  });
+  CITY.forEach(t=>{ if(terrPath[t]) gt.appendChild(mk("path",{d:terrPath[t], class:"terr"})); });
+  const bs=CITY.map(t=>terrBox[t]).filter(Boolean);
+  const x=Math.min(...bs.map(b=>b.x)), y=Math.min(...bs.map(b=>b.y));
+  const w=Math.max(...bs.map(b=>b.x+b.w))-x, h=Math.max(...bs.map(b=>b.y+b.h))-y;
+  const pad=Math.max(w,h)*0.05;
+  imap.setAttribute("viewBox",`${x-pad} ${y-pad} ${w+pad*2} ${h+pad*2}`);
+  imap.setAttribute("preserveAspectRatio","xMidYMid meet");
+  // панель по пропорциям города, чтобы не оставалось пустых полей
+  const box0=document.getElementById("inset");
+  const bodyH=330, ratio=(w+pad*2)/(h+pad*2);
+  box0.style.height=(bodyH+29)+"px";
+  box0.style.width=Math.max(170,Math.min(330,Math.round(bodyH*ratio)))+"px";
+  const box=document.getElementById("inset"), cap=document.getElementById("insetcap");
+  cap.onclick=()=>{
+    const min=box.classList.toggle("min");
+    cap.setAttribute("aria-expanded", String(!min));
+    cap.querySelector("span").textContent = min ? "показать" : "150 уч.";
+    cap.title = min ? "Развернуть врезку" : "Свернуть врезку";
+  };
+})();
+function fit(box,pad){
+  pad=pad||.08;
+  const cw=svg.clientWidth||900, ch=svg.clientHeight||600, ar=cw/ch;
+  let w=box.w*(1+pad*2), h=box.h*(1+pad*2);
+  if(w/h<ar) w=h*ar; else h=w/ar;
+  VB={x:box.x+box.w/2-w/2, y:box.y+box.h/2-h/2, w:w, h:h};
+  applyVB();
+}
+function paint(){
+  const colors=LAYER.ramp.map(cv);
+  U.forEach(u=>{
+    const c=colors[LAYER.val(u)] || cv("--void");
+    const e=cellEls[u.uik]; if(e) e.setAttribute("fill", c);
+    const i=iCells[u.uik]; if(i) i.setAttribute("fill", c);
+  });
+  buildLegend();
+  document.getElementById("mapnote").textContent=LAYER.note;
+}
+
+function buildLegend(){
+  const box=document.getElementById("legend"); box.textContent="";
+  const counts=LAYER.labels.map(()=>0);
+  U.forEach(u=>{const i=LAYER.val(u); if(i>=0&&i<counts.length) counts[i]++;});
+  LAYER.labels.forEach((l,i)=>{
+    const d=el("div","lg");
+    const sw=el("i"); sw.style.background=cv(LAYER.ramp[i]); d.appendChild(sw);
+    d.appendChild(el("span",null,l));
+    if(LAYER.count) d.appendChild(el("b","num",counts[i]));
+    box.appendChild(d);
+  });
+  if(D.no_location.length){
+    const d=el("div","lg"); const sw=el("i");
+    sw.style.background="transparent"; sw.style.border="2px solid "+cv("--warn"); d.appendChild(sw);
+    d.appendChild(el("span",null,"адрес не установлен"));
+    d.appendChild(el("b","num",D.no_location.length)); box.appendChild(d);
+  }
+}
+
+/* слои в панели */
+(function(){
+  const box=document.getElementById("layers");
+  LAYERS.forEach(L=>{
+    const b=el("button","ly"); b.setAttribute("aria-pressed", L===LAYER);
+    b.innerHTML=L.name+"<em>"+L.hint+"</em>";
+    b.onclick=()=>{
+      LAYER=L; box.querySelectorAll(".ly").forEach(x=>x.setAttribute("aria-pressed","false"));
+      b.setAttribute("aria-pressed","true"); paint();
+    };
+    box.appendChild(b);
+  });
+})();
+
+/* ============ ЗУМ И ПАНОРАМА ============ */
+(function(){
+  const cv2=document.getElementById("canvas");
+  let drag=null;
+  svg.addEventListener("pointerdown",e=>{
+    drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y}; svg.classList.add("drag"); svg.setPointerCapture(e.pointerId);
+  });
+  svg.addEventListener("pointermove",e=>{
+    if(!drag) return;
+    const k=VB.w/(svg.clientWidth||900);
+    VB.x=drag.vx-(e.clientX-drag.x)*k; VB.y=drag.vy-(e.clientY-drag.y)*k; applyVB();
+  });
+  const stop=e=>{ if(drag){drag=null; svg.classList.remove("drag");} };
+  svg.addEventListener("pointerup",stop); svg.addEventListener("pointercancel",stop);
+  svg.addEventListener("wheel",e=>{
+    e.preventDefault();
+    const r=svg.getBoundingClientRect();
+    const fx=(e.clientX-r.left)/r.width, fy=(e.clientY-r.top)/r.height;
+    const f=e.deltaY>0?1.16:1/1.16;
+    const nw=Math.min(FULL.w*1.6, Math.max(FULL.w/900, VB.w*f));
+    const k=nw/VB.w;
+    VB.x+=VB.w*fx*(1-k); VB.y+=VB.h*fy*(1-k); VB.w=nw; VB.h*=k; applyVB();
+  },{passive:false});
+  document.querySelectorAll(".zb").forEach(b=>b.onclick=()=>{
+    const z=b.dataset.z;
+    if(z==="all") fit(FULL,.02);
+    else if(z==="city") zoomCity();
+    else {
+      const f=z==="in"?1/1.4:1.4, nw=Math.min(FULL.w*1.6,Math.max(FULL.w/900,VB.w*f));
+      const k=nw/VB.w; VB.x+=VB.w*(1-k)/2; VB.y+=VB.h*(1-k)/2; VB.w=nw; VB.h*=k; applyVB();
+    }
+  });
+  const sel=document.getElementById("gozone");
+  sel.appendChild(new Option("— выберите территорию —",""));
+  TIKS.forEach(t=>sel.appendChild(new Option(`${t.tik} (${t.n} УИК)`,t.tik)));
+  sel.onchange=()=>{ const b=terrBox[sel.value]; if(b) fit(b,.08); };
+  window.addEventListener("resize",()=>applyVB());
+})();
+
+/* ============ ПОДСКАЗКА И КАРТОЧКА ============ */
+const tip=document.getElementById("tip"), detail=document.getElementById("detail");
+let selected=null;
+function tipFor(u){
+  const g=u.p[ZH]-u.p[IV];
+  return `<div class="h">УИК №${u.uik}</div>
+   <div class="r"><span>${u.tik}</span></div>
+   <div class="r"><span>Жирнов</span><b class="num">${pc(u.p[ZH])}</b></div>
+   <div class="r"><span>Иванинский</span><b class="num">${pc(u.p[IV])}</b></div>
+   <div class="r"><span>Явка</span><b class="num">${pc(u.turnout)}</b></div>
+   <div class="r"><span>Отрыв</span><b class="num">${pp(g)} п.п.</b></div>`;
+}
+[svg,imap].forEach(target=>{
+  target.addEventListener("pointermove",e=>{
+    const t=e.target.closest("[data-uik]");
+    if(!t){ tip.hidden=true; return; }
+    const u=byNum[t.dataset.uik]; if(!u){ tip.hidden=true; return; }
+    tip.innerHTML=tipFor(u); tip.hidden=false;
+    const r=document.getElementById("canvas").getBoundingClientRect();
+    let x=e.clientX-r.left+14, y=e.clientY-r.top+14;
+    if(x+270>r.width) x=e.clientX-r.left-270;
+    if(y+130>r.height) y=e.clientY-r.top-130;
+    tip.style.left=Math.max(4,x)+"px"; tip.style.top=Math.max(4,y)+"px";
+  });
+  target.addEventListener("pointerleave",()=>tip.hidden=true);
+  target.addEventListener("click",e=>{
+    const t=e.target.closest("[data-uik]");
+    if(!t) return; showDetail(byNum[t.dataset.uik]);
+  });
+});
+function markSel(n,on){
+  [cellEls[n],iCells[n]].forEach(e=>{ if(e) e.classList.toggle("sel",on); });
+}
+function showDetail(u){
+  if(!u) return;
+  if(selected) markSel(selected,false);
+  selected=u.uik; markSel(u.uik,true);
+  const rows=CAND.slice().sort((a,b)=>u.v[b.key]-u.v[a.key]).map(c=>{
+    const col=c.key===ZH?cv("--kprf"):(c.key===IV?cv("--er"):cv("--other"));
+    const w=Math.max(1,u.p[c.key]/Math.max(...CAND.map(x=>u.p[x.key]))*100);
+    return `<div class="crow"><span class="nm">${c.short} <span style="color:var(--ink-3)">· ${c.party}</span></span>
+      <span class="pc num">${pc(u.p[c.key])}</span>
+      <span class="bar"><i style="width:${w}%;background:${col}"></i></span></div>`;
+  }).join("");
+  const g=u.p[ZH]-u.p[IV];
+  detail.innerHTML=`<button class="close" aria-label="Закрыть">×</button>
+    <h3>УИК №${u.uik}</h3>
+    <div class="meta">${u.tik}${u.addr?" · "+u.addr:""}${u.venue?"<br>"+u.venue:""}
+      ${u.prec==="неизвестно"?'<br><span style="color:var(--warn)">Адрес помещения в открытых источниках не опубликован — точка условная</span>':""}</div>
+    <div class="stats">
+      <div class="st"><div class="l">Избирателей</div><div class="v num">${fmt(u.voters)}</div></div>
+      <div class="st"><div class="l">Явка</div><div class="v num">${u.turnout.toFixed(1).replace(".",",")}%</div></div>
+      <div class="st"><div class="l">Место КПРФ</div><div class="v num">${u.pl[ZH]}</div></div>
+      <div class="st"><div class="l">Отрыв</div><div class="v num">${pp(g)}</div></div>
+      <div class="st"><div class="l">Вне помещ.</div><div class="v num">${u.outside.toFixed(1).replace(".",",")}%</div></div>
+      <div class="st"><div class="l">Недейств.</div><div class="v num">${u.invalid.toFixed(1).replace(".",",")}%</div></div>
+    </div>${rows}
+    ${u.borders?`<div class="brd"><b>Границы участка</b>${u.borders}</div>`:""}`;
+  detail.hidden=false;
+  detail.querySelector(".close").onclick=()=>{
+    detail.hidden=true;
+    if(selected) markSel(selected,false);
+    selected=null;
+  };
+}
+document.getElementById("find").addEventListener("input",e=>{
+  const n=parseInt(e.target.value,10); const u=byNum[n]; if(!u) return;
+  showDetail(u);
+  const c=cellEls[n];
+  if(c){ const b=c.getBBox(); fit({x:b.x,y:b.y,w:b.width,h:b.height},2.2); }
+  else if(u.lat!=null){ const p=px(u.lon,u.lat); fit({x:p[0]-400,y:p[1]-400,w:800,h:800},.2); }
+});
+
+/* ============ ГРАФИКИ ============ */
+function svgEl(w,h){ const s=mk("svg",{viewBox:`0 0 ${w} ${h}`, width:"100%", style:`max-width:${w}px`}); return s; }
+function txt(s,x,y,c,anchor,size){
+  const t=mk("text",{x,y,class:c||"atx"}); if(anchor)t.setAttribute("text-anchor",anchor);
+  if(size)t.setAttribute("font-size",size); t.textContent=s; return t;
+}
+/* горизонтальные расходящиеся столбики */
+function hbarDiverging(data,opt){
+  opt=opt||{};
+  const W=opt.w||560, rowH=opt.rowH||22, padT=16, padB=26, L=opt.labelW||128, R=52;
+  const H=padT+data.length*rowH+padB;
+  const s=svgEl(W,H);
+  const max=Math.max(...data.map(d=>Math.abs(d.v)))*1.06||1;
+  const zero=opt.zeroAt||L+(W-L-R)*(opt.negFrac==null?0.18:opt.negFrac);
+  const scale=v=>v/max*(v<0?(zero-L):(W-R-zero));
+  s.appendChild(mk("line",{x1:zero,x2:zero,y1:padT-6,y2:padT+data.length*rowH+2,class:"ax"}));
+  data.forEach((d,i)=>{
+    const y=padT+i*rowH, bh=rowH-8;
+    const w=Math.abs(scale(d.v)), x=d.v<0?zero-w:zero;
+    const col=d.color||(d.v<0?cv("--er"):cv("--kprf"));
+    s.appendChild(mk("rect",{x, y, width:Math.max(w,1.5), height:bh, rx:3, fill:col}));
+    s.appendChild(txt(d.k,L-8,y+bh-2,"atx","end"));
+    // подпись значения всегда правее нуля: слева её затирали бы названия строк
+    const lx=d.v<0?zero+7:x+w+6;
+    s.appendChild(txt(opt.fmt?opt.fmt(d.v):pp(d.v), lx, y+bh-2, "vlab", "start"));
+  });
+  if(opt.note) s.appendChild(txt(opt.note,L,H-8,"atx sm","start"));
+  return s;
+}
+/* сгруппированные вертикальные столбики, 2 серии */
+function groupedBars(cats,series,opt){
+  opt=opt||{};
+  const W=opt.w||560, H=opt.h||230, padL=40, padR=8, padT=14, padB=opt.padB||46;
+  const s=svgEl(W,H);
+  const iw=W-padL-padR, ih=H-padT-padB;
+  const max=opt.max||Math.max(...series.flatMap(x=>x.v))*1.12;
+  const bw=iw/cats.length, gw=Math.min(bw*0.34,17);
+  for(let i=0;i<=4;i++){
+    const y=padT+ih-ih*i/4;
+    s.appendChild(mk("line",{x1:padL,x2:W-padR,y1:y,y2:y,class:"gridln"}));
+    s.appendChild(txt((max*i/4).toFixed(0)+"%",padL-7,y+3.5,"atx sm","end"));
+  }
+  cats.forEach((c,i)=>{
+    const cx=padL+bw*i+bw/2;
+    series.forEach((se,j)=>{
+      const h=Math.max(1,se.v[i]/max*ih);
+      const x=cx-gw*series.length/2-1+j*(gw+2);
+      s.appendChild(mk("rect",{x, y:padT+ih-h, width:gw, height:h, rx:3, fill:cv(se.color)}));
+    });
+    const lines=String(c).split("\n");
+    lines.forEach((ln,k)=>s.appendChild(txt(ln,cx,padT+ih+15+k*11,"atx sm","middle")));
+  });
+  s.appendChild(mk("line",{x1:padL,x2:W-padR,y1:padT+ih,y2:padT+ih,class:"ax"}));
+  return s;
+}
+function legendRow(items){
+  const d=el("div","lgnd");
+  items.forEach(([c,l])=>{
+    const sp=el("span"); const i=el("i"); i.style.background=cv(c); sp.append(i,document.createTextNode(l)); d.appendChild(sp);
+  });
+  return d;
+}
+/* диаграмма рассеяния */
+function scatter(pts,opt){
+  const W=opt.w||560,H=opt.h||300,padL=42,padR=10,padT=12,padB=40;
+  const s=svgEl(W,H); const iw=W-padL-padR, ih=H-padT-padB;
+  const xs=v=>padL+(v-opt.x0)/(opt.x1-opt.x0)*iw, ys=v=>padT+ih-(v-opt.y0)/(opt.y1-opt.y0)*ih;
+  for(let i=0;i<=4;i++){
+    const y=padT+ih*i/4, v=opt.y1-(opt.y1-opt.y0)*i/4;
+    s.appendChild(mk("line",{x1:padL,x2:W-padR,y1:y,y2:y,class:"gridln"}));
+    s.appendChild(txt(v.toFixed(0)+"%",padL-7,y+3.5,"atx sm","end"));
+  }
+  for(let i=0;i<=5;i++){
+    const x=padL+iw*i/5, v=opt.x0+(opt.x1-opt.x0)*i/5;
+    s.appendChild(txt(v.toFixed(0)+"%",x,H-padB+16,"atx sm","middle"));
+  }
+  pts.forEach(p=>s.appendChild(mk("circle",{cx:xs(p.x),cy:ys(p.y),r:p.r||3,fill:cv(p.c),"fill-opacity":.62})));
+  if(opt.vline!=null){
+    const x=xs(opt.vline);
+    s.appendChild(mk("line",{x1:x,x2:x,y1:padT,y2:padT+ih,stroke:cv("--ink-2"),"stroke-width":1.5,"stroke-dasharray":"5 4"}));
+    s.appendChild(txt(opt.vlabel,x+5,padT+12,"vlab","start"));
+  }
+  s.appendChild(mk("line",{x1:padL,x2:W-padR,y1:padT+ih,y2:padT+ih,class:"ax"}));
+  s.appendChild(txt(opt.xlab,padL+iw/2,H-6,"atx sm","middle"));
+  return s;
+}
+
+function card(title,dek){
+  const c=el("div","card"); c.appendChild(el("h2",null,title));
+  if(dek){ const d=el("div","dek"); d.innerHTML=dek; c.appendChild(d); }
+  return c;
+}
+function finding(text,kind){
+  const f=el("div","finding"+(kind?" "+kind:"")); f.appendChild(el("div","ic"));
+  const t=el("div"); t.innerHTML=text; f.appendChild(t); return f;
+}
+function chartBox(node){ const d=el("div","chart"); d.appendChild(node); return d; }
+
+/* ============ АНАЛИТИКА ============ */
+function buildAnalytics(){
+  const root=document.getElementById("v-an"); root.textContent="";
+  const zh=CAND.find(c=>c.key===ZH), iv=CAND.find(c=>c.key===IV);
+  const totalGap=iv.votes-zh.votes;
+
+  const lede=el("div","lede");
+  lede.innerHTML=`Иванинский обошёл Жирнова на <b>${fmt(totalGap)} голосов</b>. Ниже — разбор, из чего это отставание сложилось.
+    Короткий ответ: округ проигран не в городе. В Новосибирске Жирнов <b>выиграл</b> — 27,76% против 26,84%.
+    Отставание целиком создали три вещи: электронное голосование, сельская явка и надомные бюллетени.`;
+  root.appendChild(lede);
+
+  /* 1. вклад территорий */
+  const c1=card("Откуда взялось отставание в "+fmt(totalGap)+" голосов",
+    "Для каждой территории — разница между голосами Иванинского и Жирнова. Синим вправо — территории, где мы проиграли; красным влево — где выиграли. <b>Один ДЭГ дал 41% всего отставания</b> — больше, чем все десять сельских районов вместе.");
+  const rows=TIKS.map(t=>({k:t.tik, v:t.v[IV]-t.v[ZH]}));
+  rows.push({k:"ДЭГ", v:DEG.v[IV]-DEG.v[ZH]});
+  rows.sort((a,b)=>b.v-a.v);
+  c1.appendChild(legendRow([["--er","проиграли территорию"],["--kprf","выиграли территорию"]]));
+  c1.appendChild(chartBox(hbarDiverging(rows.map(r=>({k:r.k, v:r.v, color:r.v>0?cv("--er"):cv("--kprf")})),
+    {w:640, labelW:140, negFrac:.16, fmt:v=>(v>0?"+":"")+fmt(v)})));
+  c1.appendChild(finding(`<b>ДЭГ — это 13 749 голосов отставания из ${fmt(totalGap)}.</b> На электронном голосовании явка составила 90,3% при 42,6% по округу, а Жирнов получил 13,51% против своих же 21,90% в бумажном голосовании. Заельцовский и Железнодорожный районы, наоборот, дали плюс: там мы выиграли.`));
+  root.appendChild(c1);
+
+  /* 2. явка */
+  const sel=U.filter(u=>u.cast>=100).slice().sort((a,b)=>a.turnout-b.turnout);
+  const step=Math.floor(sel.length/10), dec=[];
+  for(let i=0;i<10;i++){
+    const g=sel.slice(i*step, i===9?sel.length:(i+1)*step);
+    const cast=g.reduce((s,u)=>s+u.cast,0);
+    dec.push({lo:g[0].turnout, hi:g[g.length-1].turnout,
+      zh:100*g.reduce((s,u)=>s+u.v[ZH],0)/cast, iv:100*g.reduce((s,u)=>s+u.v[IV],0)/cast});
+  }
+  const c2=card("Явка предсказывает результат точнее любой агитации",
+    `Все ${sel.length} участков с сотней и более голосов разбиты на десять равных групп — от самой низкой явки к самой высокой. Корреляция явки с процентом Иванинского <b class="num">+0,78</b>, с процентом Жирнова <b class="num">−0,59</b>.`);
+  c2.appendChild(legendRow([["--kprf","Жирнов, КПРФ"],["--er","Иванинский, ЕР"]]));
+  c2.appendChild(chartBox(groupedBars(
+    dec.map(d=>Math.round(d.lo)+"–\n"+Math.round(d.hi)+"%"),
+    [{v:dec.map(d=>d.zh),color:"--kprf"},{v:dec.map(d=>d.iv),color:"--er"}],
+    {w:620,h:250,max:62})));
+  c2.appendChild(finding(`<b>Перелом проходит по явке около 34%.</b> В трёх группах с самой низкой явкой Жирнов впереди Иванинского. Начиная с четвёртой — отстаёт, и разрыв растёт монотонно: в группе с явкой 72–100% он составляет уже <b class="num">44,7 пункта</b>. Общий призыв «приходите на выборы» в этом округе работал на соперника.`,"warn"));
+  root.appendChild(c2);
+
+  /* 3. scatter */
+  const c3=card("То же самое по каждому участку в отдельности",
+    "Каждая точка — участок. По горизонтали явка, по вертикали процент Иванинского. Цвет показывает тип территории: город, пригород, село.");
+  c3.appendChild(legendRow([["--er","Новосибирск"],["--o3","пригород"],["--o5","село"]]));
+  c3.appendChild(chartBox(scatter(sel.map(u=>({
+      x:u.turnout, y:u.p[IV], r:Math.max(2.2,Math.sqrt(u.cast)/9),
+      c:u.type==="city"?"--er":(u.type==="suburb"?"--o3":"--o5")})),
+    {w:620,h:310,x0:15,x1:100,y0:0,y1:85,xlab:"Явка на участке",vline:34,vlabel:"34% — точка перелома"})));
+  c3.appendChild(finding("Городские участки собраны в левом нижнем углу — низкая явка, умеренный результат ЕР. Сельские уходят вправо вверх. Промежуточных почти нет: это два разных электората, и агитация, работающая на одном, не работает на другом.","pos"));
+  root.appendChild(c3);
+
+  /* 4. город/село */
+  const grp=[["Новосибирск","city"],["Пригород","suburb"],["Село","rural"]].map(([n,t])=>{
+    const g=U.filter(u=>u.type===t), cast=g.reduce((s,u)=>s+u.cast,0), vt=g.reduce((s,u)=>s+u.voters,0);
+    return {n, n_uik:g.length, turnout:100*g.reduce((s,u)=>s+u.turnout*u.voters/100,0)/vt,
+      zh:100*g.reduce((s,u)=>s+u.v[ZH],0)/cast, iv:100*g.reduce((s,u)=>s+u.v[IV],0)/cast,
+      nl:100*g.reduce((s,u)=>s+u.v[NL],0)/cast, ya:100*g.reduce((s,u)=>s+u.v[YA],0)/cast};
+  });
+  grp.push({n:"ДЭГ",n_uik:1,turnout:DEG.turnout,zh:DEG.p[ZH],iv:DEG.p[IV],nl:DEG.p[NL],ya:DEG.p[YA]});
+  const g2=el("div","grid2");
+  const c4=card("Четыре разных электората в одном бюллетене","Взвешенные проценты по типу территории.");
+  c4.appendChild(legendRow([["--kprf","Жирнов"],["--er","Иванинский"]]));
+  c4.appendChild(chartBox(groupedBars(grp.map(g=>g.n+"\n"+g.n_uik+" уч."),
+    [{v:grp.map(g=>g.zh),color:"--kprf"},{v:grp.map(g=>g.iv),color:"--er"}],{w:320,h:230,max:50})));
+  const c5=card("Явка по тем же четырём группам","Тот же разрез — видно, где мобилизация была управляемой.");
+  c5.appendChild(chartBox(groupedBars(grp.map(g=>g.n),
+    [{v:grp.map(g=>g.turnout),color:"--o3"}],{w:320,h:230,max:100})));
+  c5.appendChild(finding("В городе на выборы пришёл каждый третий, в селе — каждый второй, в ДЭГ — девять из десяти зарегистрировавшихся.","warn"));
+  g2.append(c4,c5); root.appendChild(g2);
+
+  /* 5. спойлеры */
+  function corr(a,b){
+    const n=a.length, ma=a.reduce((s,x)=>s+x,0)/n, mb=b.reduce((s,x)=>s+x,0)/n;
+    let sa=0,sb=0,sab=0;
+    for(let i=0;i<n;i++){sa+=(a[i]-ma)**2; sb+=(b[i]-mb)**2; sab+=(a[i]-ma)*(b[i]-mb);}
+    return sab/Math.sqrt(sa*sb);
+  }
+  const city=U.filter(u=>u.type==="city"&&u.cast>=100);
+  const SHORTP={"Справедливая Россия":"СРЗП","Партия пенсионеров":"Пенсионеры","Новые люди":"Нов. люди"};
+  const corrs=CAND.filter(c=>c.key!==ZH&&c.key!==IV).map(c=>({
+    k:c.short+" · "+(SHORTP[c.party]||c.party), v:corr(city.map(u=>u.p[ZH]), city.map(u=>u.p[c.key]))
+  })).sort((a,b)=>b.v-a.v);
+  const c6=card("Проверка штабной гипотезы: отнимали ли голоса малые партии",
+    `В аналитике штаба было записано, что Новые люди, Родина и ЛДПР работают на том же поле протеста и отбирают наши голоса. Данные это <b>не подтверждают</b>. Показана корреляция процента Жирнова с процентом каждого соперника по ${city.length} городским участкам: положительная величина означает, что кандидаты росли на одних и тех же участках, отрицательная — что в противофазе.`);
+  c6.appendChild(chartBox(hbarDiverging(corrs.map(c=>({k:c.k,v:c.v,color:c.v<0?cv("--er"):cv("--kprf")})),
+    {w:640,labelW:186,negFrac:.42,fmt:v=>(v>0?"+":"")+v.toFixed(2).replace(".",",")})));
+  c6.appendChild(finding("<b>Новые люди и Яблоко нам не мешали — они росли там же, где мы</b> (+0,16 и +0,33): это общий городской протестный профиль, а не переток. В реальной противофазе оказались Родина (−0,56) и Партия пенсионеров (−0,51) — их избиратель живёт на других участках. Вывод для следующей кампании: ресурс, заложенный на вытеснение Новых людей из протестной ниши, был потрачен на несуществующую угрозу.","pos"));
+  root.appendChild(c6);
+
+  /* 6. аномалии */
+  const hi=U.filter(u=>u.turnout>=80).sort((a,b)=>b.turnout-a.turnout);
+  const hc=hi.reduce((s,u)=>s+u.cast,0);
+  const home=U.filter(u=>u.cast>=100&&u.outside>=20);
+  const hmc=home.reduce((s,u)=>s+u.cast,0);
+  const c7=card("Аномалии: закрытые участки и надомное голосование",
+    "Два типа участков, где результат резко отличается от окружающих.");
+  const g3=el("div","grid2");
+  const a1=el("div");
+  a1.innerHTML=`<h3 style="font-size:13px;margin-bottom:3px">Явка 80% и выше — ${hi.length} участков</h3>
+    <div style="font-size:12px;color:var(--ink-2);margin-bottom:9px">Столбик — процент Иванинского, в скобках явка на участке.</div>`;
+  a1.appendChild(chartBox(hbarDiverging(hi.slice(0,10).map(u=>({
+      k:"№"+u.uik+" · явка "+u.turnout.toFixed(0)+"%", v:u.p[IV], color:cv("--er")})),
+    {w:330,labelW:124,negFrac:0,rowH:20,fmt:v=>v.toFixed(0)+"%"})));
+  a1.appendChild(finding(`В сумме ${fmt(hc)} голосов. Жирнов там <b class="num">12,48%</b>, Иванинский <b class="num">58,61%</b>. Четыре участка показали явку ровно 100%: 2080, 2085 и 2049 — закрытые учреждения, их адреса не публикуются.`,"warn"));
+  const a2=el("div");
+  a2.innerHTML=`<h3 style="font-size:13px;margin-bottom:3px">Надомное голосование от 20% — ${home.length} участков</h3>
+    <div style="font-size:12px;color:var(--ink-2);margin-bottom:9px">Столбик — доля бюллетеней, поданных вне помещения.</div>`;
+  a2.appendChild(chartBox(hbarDiverging(home.sort((a,b)=>b.outside-a.outside).slice(0,10).map(u=>({
+      k:"№"+u.uik+" · "+u.tik, v:u.outside, color:cv("--o3")})),
+    {w:366,labelW:162,negFrac:0,rowH:20,fmt:v=>v.toFixed(0)+"%"})));
+  a2.appendChild(finding(`В среднем по округу вне помещения проголосовали 10,9%. На этих ${home.length} участках — ${fmt(hmc)} голосов, Иванинский <b class="num">48,69%</b> против <b class="num">18,01%</b> у Жирнова. Рекорд — УИК 578 в Куйбышевском районе: <b class="num">72%</b> бюллетеней принесли на дом.`,"warn"));
+  g3.append(a1,a2); c7.appendChild(g3); root.appendChild(c7);
+
+  /* 7. резерв */
+  // резерв считается строго по отставанию от Иванинского — нашего прямого соперника,
+  // и число участков, и недобор голосов берутся из одного и того же определения
+  const close=U.filter(u=>u.win!==ZH&&(u.p[ZH]-u.p[IV])>-5);
+  const closeVotes=close.reduce((s,u)=>s+(u.v[IV]-u.v[ZH]),0);
+  const byT={}; close.forEach(u=>{byT[u.tik]=(byT[u.tik]||0)+(u.v[IV]-u.v[ZH]);});
+  const c8=card(`Ближайший резерв: ${close.length} участков, которые почти взяли`,
+    `Участки, где Иванинский обошёл нас меньше чем на пять процентных пунктов. Суммарное отставание на них — <b class="num">${fmt(closeVotes)} голосов</b>, в двадцать с лишним раз меньше, чем ДЭГ отнял за один день.`);
+  c8.appendChild(chartBox(hbarDiverging(Object.entries(byT).sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>({k, v, color:cv("--kprf")})),{w:560,labelW:140,negFrac:0,fmt:v=>fmt(v)+" гол."})));
+  c8.appendChild(finding("Семь десятых резерва — три городских района, то есть та же территория, где мы уже выигрываем. Это самая дешёвая прибавка в следующей кампании: там не надо менять электорат, надо добрать явку своих.","pos"));
+  root.appendChild(c8);
+
+  /* 8. Яблоко */
+  const cityAll=U.filter(u=>u.type==="city");
+  const yaTop=cityAll.slice().sort((a,b)=>b.p[YA]-a.p[YA]).slice(0,15);
+  const cityCast=cityAll.reduce((s,u)=>s+u.cast,0);
+  const yaCity=100*cityAll.reduce((s,u)=>s+u.v[YA],0)/cityCast;
+  const c9=card("Яблоко: где Чубыкина набрала больше всего по Новосибирску",
+    `По городу <b class="num">${pc(yaCity)}</b> против <b class="num">${pc(CAND.find(c=>c.key===YA).pct)}</b> по округу. Ниже — пятнадцать лучших городских участков.`);
+  c9.appendChild(chartBox(hbarDiverging(yaTop.map(u=>({
+      k:"№"+u.uik+" · "+(u.addr||u.tik).slice(0,24), v:u.p[YA], color:cv("--g3")})),
+    {w:640,labelW:218,negFrac:0,rowH:21,fmt:v=>v.toFixed(2).replace(".",",")+"%"})));
+  const yaD=["Железнодорожный","Заельцовский","Калининский"].map(t=>{
+    const g=cityAll.filter(u=>u.tik===t), c=g.reduce((s,u)=>s+u.cast,0);
+    return {t, v:100*g.reduce((s,u)=>s+u.v[YA],0)/c};
+  });
+  c9.appendChild(finding(`По районам: Железнодорожный <b class="num">${pc(yaD[0].v)}</b>, Заельцовский <b class="num">${pc(yaD[1].v)}</b>, Калининский <b class="num">${pc(yaD[2].v)}</b>. Ядро — старый центр вдоль Красного проспекта и привокзальная часть. Корреляция с результатом Жирнова по городу <b class="num">+0,39</b>: Яблоко забирает не наш электорат, а тот же протестный слой, который иначе просто не пришёл бы.`,"pos"));
+  root.appendChild(c9);
+
+  /* 9. Новые люди */
+  const nlTop=U.slice().sort((a,b)=>b.p[NL]-a.p[NL]).slice(0,12);
+  const c10=card("Новые люди: где Левшенков вошёл в тройку",
+    `Первое место — один участок, второе — ${U.filter(u=>u.pl[NL]===2).length}, третье — ${U.filter(u=>u.pl[NL]===3).length}. Почти вся сила сосредоточена в Заельцовском районе.`);
+  c10.appendChild(chartBox(hbarDiverging(nlTop.map(u=>({
+      k:"№"+u.uik+" · "+u.tik+" ("+u.pl[NL]+" м.)", v:u.p[NL], color:cv("--nl")})),
+    {w:640,labelW:218,negFrac:0,rowH:21,fmt:v=>v.toFixed(2).replace(".",",")+"%"})));
+  c10.appendChild(finding("Верхушка списка — участки 1563–1580: новостройки Заельцовского района у аэропорта и вдоль Дуси Ковальчук. Это молодые семьи, въехавшие за последние годы. Там же у Новых людей единственная победа — УИК 1574 с 30,67%.","pos"));
+  root.appendChild(c10);
+
+  /* 10. источники и оговорки */
+  const c11=card("Что в этих данных точно, а что приближённо","");
+  c11.innerHTML+=`<div class="dek" style="max-width:none">
+   <p><b>Результаты — точные.</b> Взяты из протокольной таблицы МОСведений по округу №137. Сумма по всем 497 участкам и ДЭГ сходится с итогом округа до одного голоса по каждому из восьми кандидатов и по всем контрольным строкам.</p>
+   <p><b>Адреса городских участков — официальные.</b> 147 из 150 разобраны из перечня избирательных участков мэрии Новосибирска в редакции от 8 июля 2026 года.</p>
+   <p><b>Координаты — проверены дважды.</b> Геокодирование официальных адресов сверено с открытым датасетом координат участков 2021 года: медиана расхождения 14 метров, 95% точек ближе 200 метров. Дополнительно каждая точка проверена на попадание внутрь границ своего района — прошли 490 из 491.</p>
+   <p><b>Границы участков — приближение, и это важно понимать.</b> Настоящие границы УИК публикуются только текстом, перечнем улиц и домов; геоданных по ним в открытом доступе не существует. Закрашенные области на карте — полигоны Вороного: территория, ближайшая к данному участку внутри его района. Для городских участков в карточке приведено официальное текстовое описание границ — ему и следует верить при спорах.</p>
+   <p><b>Семь участков без установленного места:</b> ${D.no_location.join(", ")}. Это закрытые учреждения и участки временного пребывания, адреса которых не публикуются; на карте они показаны жёлтым контуром в центре своей территории. В расчётах они участвуют полностью — неизвестно только расположение.</p>
+   <p><b>Административные границы</b> районов и муниципальных округов — из OpenStreetMap.</p></div>`;
+  root.appendChild(c11);
+}
+
+/* ============ ТАБЛИЦА ============ */
+const COLS=[
+  {k:"uik",t:"УИК",v:u=>u.uik},
+  {k:"tik",t:"Территория",v:u=>u.tik},
+  {k:"voters",t:"Избир.",v:u=>u.voters,n:1},
+  {k:"turnout",t:"Явка",v:u=>u.turnout,n:1,f:v=>v.toFixed(1).replace(".",",")+"%"},
+  {k:"zh",t:"Жирнов",v:u=>u.p[ZH],n:1,f:v=>v.toFixed(2).replace(".",",")+"%"},
+  {k:"iv",t:"Иванинский",v:u=>u.p[IV],n:1,f:v=>v.toFixed(2).replace(".",",")+"%"},
+  {k:"nl",t:"Нов. люди",v:u=>u.p[NL],n:1,f:v=>v.toFixed(2).replace(".",",")+"%"},
+  {k:"ya",t:"Яблоко",v:u=>u.p[YA],n:1,f:v=>v.toFixed(2).replace(".",",")+"%"},
+  {k:"pl",t:"Место",v:u=>u.pl[ZH],n:1},
+  {k:"gap",t:"Отрыв",v:u=>u.p[ZH]-u.p[IV],n:1,f:v=>pp(v)},
+  {k:"out",t:"Надом.",v:u=>u.outside,n:1,f:v=>v.toFixed(1).replace(".",",")+"%"},
+  {k:"addr",t:"Адрес",v:u=>u.addr||""}
+];
+let sortK="uik", sortD=1;
+function tableRows(){
+  const q=document.getElementById("tsearch").value.trim().toLowerCase();
+  const z=document.getElementById("tzone").value;
+  const f=document.getElementById("tfilter").value;
+  let rows=U.slice();
+  if(z) rows=rows.filter(u=>u.tik===z);
+  if(f==="won") rows=rows.filter(u=>u.win===ZH);
+  if(f==="close") rows=rows.filter(u=>u.win!==ZH&&(u.p[ZH]-u.p[IV])>-5);
+  if(f==="hi") rows=rows.filter(u=>u.turnout>=80);
+  if(f==="home") rows=rows.filter(u=>u.outside>=20);
+  if(f==="noloc") rows=rows.filter(u=>u.prec==="неизвестно");
+  if(q) rows=rows.filter(u=>String(u.uik).includes(q)||(u.addr||"").toLowerCase().includes(q)
+    ||(u.venue||"").toLowerCase().includes(q)||u.tik.toLowerCase().includes(q));
+  const col=COLS.find(c=>c.k===sortK);
+  rows.sort((a,b)=>{const x=col.v(a),y=col.v(b); return (x>y?1:x<y?-1:0)*sortD;});
+  return rows;
+}
+function renderTable(){
+  const tb=document.getElementById("tbl");
+  const th=tb.querySelector("thead"), tbody=tb.querySelector("tbody");
+  if(!th.children.length){
+    const tr=document.createElement("tr");
+    COLS.forEach(c=>{
+      const h=el("th",null,c.t); h.onclick=()=>{ sortD = sortK===c.k? -sortD : (c.n?-1:1); sortK=c.k; renderTable(); };
+      tr.appendChild(h);
+    });
+    th.appendChild(tr);
+  }
+  const rows=tableRows();
+  document.getElementById("tcount").textContent=`показано ${rows.length} из ${U.length} участков`;
+  tbody.textContent="";
+  const frag=document.createDocumentFragment();
+  rows.forEach(u=>{
+    const tr=document.createElement("tr");
+    COLS.forEach(c=>{
+      const v=c.v(u); const td=el("td", c.n?"num":null);
+      if(c.k==="pl") td.innerHTML=`<span class="pill ${v===1?"p1":"p2"}">${v}</span>`;
+      else td.textContent = c.f?c.f(v):(typeof v==="number"&&c.n?fmt(v):v);
+      tr.appendChild(td);
+    });
+    tr.onclick=()=>{ switchTab("map"); showDetail(u); const cl=cellEls[u.uik];
+      if(cl){const b=cl.getBBox(); fit({x:b.x,y:b.y,w:b.width,h:b.height},2.2);} };
+    frag.appendChild(tr);
+  });
+  tbody.appendChild(frag);
+}
+(function(){
+  const z=document.getElementById("tzone");
+  z.appendChild(new Option("Все территории",""));
+  TIKS.forEach(t=>z.appendChild(new Option(t.tik,t.tik)));
+  ["tsearch","tzone","tfilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderTable));
+  document.getElementById("copycsv").onclick=async e=>{
+    const rows=tableRows();
+    const csv=[COLS.map(c=>c.t).join(";")].concat(rows.map(u=>COLS.map(c=>{
+      const v=c.v(u); return typeof v==="number"?String(v).replace(".",","):v;
+    }).join(";"))).join("\n");
+    try{ await navigator.clipboard.writeText(csv); e.target.textContent="Скопировано ✓";
+      setTimeout(()=>e.target.textContent="Скопировать как CSV",1800);
+    }catch(err){ e.target.textContent="Не удалось скопировать"; }
+  };
+})();
+
+/* ============ ВКЛАДКИ И ТЕМА ============ */
+function switchTab(v){
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected", t.dataset.v===v));
+  ["map","rp","an","tb"].forEach(k=>document.getElementById("v-"+k).hidden = k!==v);
+  if(v==="map") requestAnimationFrame(applyVB);
+  if(v==="tb") renderTable();
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>switchTab(t.dataset.v));
+document.getElementById("theme").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const isDark = cur ? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", isDark?"light":"dark");
+  paint(); buildAnalytics();
+};
+
+/* ============ ПОДВАЛ ============ */
+document.getElementById("foot").innerHTML=
+  `<b>Источники.</b> Результаты — ${D.sources.results}. Адреса городских участков — ${D.sources.city_addresses}. `+
+  `Координаты — ${D.sources.coords}. Границы — ${D.sources.boundaries}. `+
+  `Подготовлено для штаба; все расчёты воспроизводятся скриптами в папке проекта.`;
+
+/* ============ СТАРТ ============ */
+function zoomCity(){
+  const c=CITY.map(t=>terrBox[t]).filter(Boolean);
+  const x=Math.min(...c.map(b=>b.x)), y=Math.min(...c.map(b=>b.y));
+  fit({x, y, w:Math.max(...c.map(b=>b.x+b.w))-x, h:Math.max(...c.map(b=>b.y+b.h))-y}, .06);
+}
+buildAnalytics();
+// адрес вида #an, #tb, #city; через запятую можно добавить dark или light:  #an,dark
+const H=(location.hash||"").replace(/^#/,"").split(",").map(s=>s.trim());
+if(H.includes("dark")||H.includes("light"))
+  document.documentElement.setAttribute("data-theme", H.includes("dark")?"dark":"light");
+["rp","an","tb"].some(v=>H.includes(v) && (switchTab(v), true));
+// в адрес можно добавить имя слоя, чтобы ссылка открывала сразу его: #pl_nl, #turn, #ya
+const hashLayer=LAYERS.find(L=>H.includes(L.id));
+if(hashLayer){
+  LAYER=hashLayer;
+  document.querySelectorAll(".ly").forEach((b,i)=>b.setAttribute("aria-pressed", String(LAYERS[i]===hashLayer)));
+}
+requestAnimationFrame(()=>{ if(H.includes("city")) zoomCity(); else fit(FULL,.02); paint(); });
+})();
+</script>
